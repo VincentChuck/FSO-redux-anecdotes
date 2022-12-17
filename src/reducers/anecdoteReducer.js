@@ -7,7 +7,6 @@ const anecdoteSlice = createSlice({
   reducers: {
     voteFor(state, action) {
       const updatedAnecdote = action.payload
-      console.log(updatedAnecdote)
       return state.map(a =>
         a.id === updatedAnecdote.id ? updatedAnecdote : a 
       )
@@ -43,7 +42,6 @@ export const vote = (anecdote) => {
       ...anecdote,
       votes: anecdote.votes + 1
     }
-    console.log(likedAnecdote)
     const updatedAnecdote = await anecdoteService.update(anecdote.id, likedAnecdote)
     dispatch(voteFor(updatedAnecdote))
   }
